@@ -1,10 +1,17 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Link from "next/link";
+import Image from "next/image";
+
+import NextImage from '../public/image.png'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const myImageLoader = ({ src, width, quality }) => {
+    return `https://stimg2.cardekho.com/images/roadTestimages/userimages/671/1597674082017/GeneralRoadTest.jpg?tr=w-${width}?tr=w-${width}`
+  }
   return (
     <>
       <Head>
@@ -18,10 +25,18 @@ export default function Home() {
         <p>I am a Frontend Engineer!</p>
         <p>I love building things.</p>
         <br />
-        <Link href="/news">News Page</Link>
+        <Link href="/users">Static Page</Link>
+        <br />
+        <Link href="/server/users">SSR</Link>
+        <br />
+        <Link href="/static/users">SSG</Link>
         <br />
         <br />
         <Link href="/quotes">Quotes Page</Link>
+        <br />
+        <br />
+        {/* <Image src={NextImage} alt="Next Image" width={500} height={300} /> */}
+        <Image loader={myImageLoader} src={"https://stimg2.cardekho.com/images/roadTestimages/userimages/671/1597674082017/GeneralRoadTest.jpg?tr=w-360?tr=w-320"} alt="Next Image" width={300} height={200} />
       </main>
     </>
   );
